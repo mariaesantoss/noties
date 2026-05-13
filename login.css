@@ -1,0 +1,26 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    color: #f2f2f2;
+}
+
+body{
+    /* height: 100%; */
+    display: flex;
+    background-image: url(https://static.vecteezy.com/ti/fotos-gratis/p1/69816253-estrelado-noite-montanha-por-do-sol-panorama-gratis-foto.jpg);
+    
+}
+
+html{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#login {
+    background-color: black;
+    padding: ;
+}
