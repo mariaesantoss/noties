@@ -6,10 +6,7 @@
 }
 
 body{
-    /* height: 100%; */
-    display: flex;
-    background-image: url(https://static.vecteezy.com/ti/fotos-gratis/p1/69816253-estrelado-noite-montanha-por-do-sol-panorama-gratis-foto.jpg);
-    
+    background-image: url(https://static.vecteezy.com/ti/fotos-gratis/p1/69816253-estrelado-noite-montanha-por-do-sol-panorama-gratis-foto.jpg);   
 }
 
 html{
@@ -21,6 +18,45 @@ html{
 }
 
 #login {
-    background-color: black;
-    padding: ;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;    
+    background-color: rgba(26, 9, 53, 0.37);
+    padding: 15% 10%;
+    width: 30vw;
+    height: 40vh;
+  
+}
+
+h1{
+    text-align: center;
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-content: space-between;}
+
+#buttons{
+        display: flex;         
+        justify-content: center;
+        width: 100%;
+        margin-top: 5%;
+}
+
+button{
+    border-radius: 100px;
+    border: #ba9dff7c solid 1px;
+    background: none;
+    width: 100%;
+    height: 4vh;
+}
+
+#entrar{
+    background-color: #9c45ff93;
+}
+
+input{
+    width: 100%;
 }
