@@ -1,0 +1,17 @@
+/* Cores */
+:root{
+    --branco: #F2F2F2;
+    --roxo: #6E44FF;
+}
+
+.btn{
+    border-radius: 100px;
+    border: var(--roxo) solid 1px;
+    background: none;
+}
+
+.cta-btn{
+    border-radius: 100px;
+    border: none;
+    background-color: var(--roxo);
+}
