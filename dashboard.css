@@ -6,15 +6,25 @@
     box-sizing: border-box;
 }
 
+
+.container-fluid{
+    display: flex;
+    padding-left: 40px;
+}
+
 h1 {   
     font-family: 'DM Sans';
     font-weight: 700;
-    color:blueviolet;
+    font-size: ;
+    color: var(--branco);
 }
 
 body{
-   
-    background-color: blue;
+    background-color: rgb(0, 0, 0);
+}
+
+span{
+    color: var(--roxo);
 }
 
 #intro{
@@ -22,7 +32,29 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: aqua;
-    height: 25vh;
+    background-color: rgb(0, 0, 0);
+    height: 40vh;
     gap: 20%;
+}
+
+#searchbar{
+    background-color: var(--cinzaescuro);
+    border: none;
+    border-radius: 50px;
+    height: 6vh;
+    width: 70vw;
+    padding: 3.5% 3.5% 3.5% 55px;
+    position: relative;
+}
+
+#searchbar::placeholder{
+    color: var(--cinza);
+}
+
+#lupa{
+    display: flex;
+    color: var(--branco);
+    z-index: 1;
+    position: absolute;
+    translate: rotateY('-90px');
 }
