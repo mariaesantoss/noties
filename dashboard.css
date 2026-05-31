@@ -4,19 +4,36 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    color: var(--branco);
 }
 
-
-.container-fluid{
+#navbar{
     display: flex;
-    padding-left: 40px;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vh;
+    border-bottom: solid var(--cinzaescuro) 1px;
+    padding-left: 3%;
+    padding-right: 3%;
+}
+
+img{
+    grid-column: 3;
+    border-radius: 100%;
+    height: 5vh;
+    width: 5vh;
+}
+
+#voce{
+    display: grid;
+    grid-template-columns: 1fr 0.5fr 1fr;
+    justify-content: space-between;
+    align-items: center;
 }
 
 h1 {   
     font-family: 'DM Sans';
     font-weight: 700;
-    font-size: ;
-    color: var(--branco);
 }
 
 body{
@@ -53,8 +70,28 @@ span{
 
 #lupa{
     display: flex;
-    color: var(--branco);
     z-index: 1;
     position: absolute;
-    translate: rotateY('-90px');
+    translate: 100% 90%;
+    color: var(--cinza);
+}
+
+#logo{
+    color: var(--roxo);
+} 
+
+/* Lembrar de descobrir o erro que está acontecendo na mudança do tamanho da logo */
+
+#brand{
+    font-weight: 500;
+}
+
+main{
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    align-items: center;
+}
+
+h2{
+    padding: 5vh 0vh 7vh 5vh;
 }
