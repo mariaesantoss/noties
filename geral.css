@@ -2,9 +2,9 @@
 :root{
     --branco: #F2F2F2;
     --roxo: #6E44FF;
-    --cinza: #8d8d8d;
+    --cinza: #626262;
     --cinzaescuro:#282828;
-    --cinzaclaro:#d5d5d559;
+    --cinzaclaro:#e4e4e48e;
 }
 
 .btn{
