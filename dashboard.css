@@ -11,10 +11,10 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 8vh;
+    height: 10vh;
     border-bottom: solid var(--cinzaescuro) 1px;
-    padding-left: 3%;
-    padding-right: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 img{
@@ -32,12 +32,13 @@ img{
 }
 
 h1 {   
+    font-size: 3.5rem;
     font-family: 'DM Sans';
     font-weight: 700;
 }
 
 body{
-    background-color: rgb(0, 0, 0);
+    background-color: var(--preto);
 }
 
 span{
@@ -49,23 +50,23 @@ span{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: rgb(0, 0, 0);
-    height: 40vh;
-    gap: 20%;
+    background-color: var(--preto);
+    height: 70vh;
+    gap: 10%;
 }
 
 #searchbar{
     background-color: var(--cinzaescuro);
     border: none;
     border-radius: 50px;
-    height: 6vh;
-    width: 70vw;
-    padding: 3.5% 3.5% 3.5% 55px;
+    height: 5vh;
+    width: 50vw;
+    padding: 3.5% 3.5% 3.5% 50px;
     position: relative;
 }
 
 #searchbar::placeholder{
-    color: var(--cinza);
+    color: var(--cinzaclaro);
 }
 
 #lupa{
@@ -73,25 +74,32 @@ span{
     z-index: 1;
     position: absolute;
     translate: 100% 90%;
-    color: var(--cinza);
+    color: var(--cinzaclaro);
 }
 
-#logo{
+#brand{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 400;
+    gap: 5px;
+}
+
+#brand i{
     color: var(--roxo);
+    font-size: 2rem;
 } 
 
 /* Lembrar de descobrir o erro que está acontecendo na mudança do tamanho da logo */
-
-#brand{
-    font-weight: 500;
-}
 
 main{
     display: grid;
     grid-template-rows: 1fr 2fr;
     align-items: center;
+    padding: 5vh 25vw 0vh 25vh;
 }
 
-h2{
-    padding: 5vh 0vh 7vh 5vh;
+footer{
+    display: flex;
+    justify-content: center;
 }

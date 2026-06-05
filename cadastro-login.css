@@ -31,12 +31,11 @@ html{
     flex-direction: column;
     align-items: center;
     padding: 10%;
-    width: 30vw;
+    width: 35vw;
     height: auto;
-    background: rgba(0, 0, 0, 0.46);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(6.9px);
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(0, 0, 0, 0.595);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.286);
+    backdrop-filter: blur(7px);
     border-radius: 25px;
 }
 
@@ -63,7 +62,14 @@ span{
     display: flex;
     flex-direction: column;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 5%;
+}
+
+#criarconfirmar{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    gap: 10px;
 }
 
 #buttons{
@@ -98,10 +104,44 @@ input{
     border: solid var(--branco) 1px;
     border-radius: 8px;
     background: none;
+    outline: none;
 }
 
 ::placeholder{
     color: var(--cinzaclaro);
 }
+
+/*  */
+
+  /* Esconde o input original */
+  input[type="file"] {
+    position: absolute;
+    left: -9999px; /* Fora da tela */
+  }
+
+  /* Botão personalizado */
+  .file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--preto);
+    color: white;
+    font-size: 14px;
+    font-family: 'DM Sans';
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .file-label:hover {
+    background-color: var(--roxo);
+  }
+
+  /* Texto do nome do arquivo */
+  .file-name {
+    margin-left: 10px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    color: var(--cinzaclaro);
+  }
 
 

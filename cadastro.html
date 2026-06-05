@@ -15,14 +15,26 @@
 
         <form action="" id="form"> 
             <label for="email">Qual e-mail vai usar?<br>
-                    <input type="email" name="email" placeholder="examplo@gmail.com">
+                    <input type="email" name="email" placeholder="examplo@gmail.com" required>
             </label>
-            <label for="senha"> Crie uma senha<br>
-                <input type="password" name="senha" placeholder="senha123">
-            </label>
-            <label for="confirmarsenha"> Confirme a sua senha<br>
-                <input type="password" name="confirmarsenha" placeholder="senha123">
-            </label>
+
+            <div id="criarconfirmar">
+                <label for="senha"> Crie uma senha<br>
+                    <input type="password" name="senha" placeholder="senha123" required>
+                </label>
+                <label for="confirmarsenha"> Confirme a sua senha<br>
+                    <input type="password" name="confirmarsenha" placeholder="senha123" required>
+                </label>
+            </div>
+
+            <!-- Input real -->
+            <input type="file" id="arquivo" accept=".jpg,.png,.pdf">
+  
+            <!-- Label que aciona o input -->
+            <label for="arquivo" class="file-label">📂 Escolher arquivo</label>
+            
+            <!-- Onde o nome do arquivo será exibido -->
+            <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
 
             <div id="buttons">
                 <button class="btn">
