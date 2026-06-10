@@ -6,6 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="geral.css" />
     <link rel="stylesheet" href="cadastro-login.css" />
+
   </head>
   <body>
     <div id="cadastro">
@@ -15,7 +16,7 @@
 
       <form action="" id="form">
         <label for="email"
-          >Qual e-mail vai usar?<br />
+          >Qual e-mail vai usar?<br/>
           <input
             type="email"
             name="email"
@@ -26,7 +27,7 @@
 
         <div id="criarconfirmar">
           <label for="senha">
-            Crie uma senha<br />
+            Crie uma senha<br/>
             <input
               type="password"
               name="senha"
@@ -35,7 +36,7 @@
             />
           </label>
           <label for="confirmarsenha">
-            Confirme a sua senha<br />
+            Confirme a sua senha<br/>
             <input
               type="password"
               name="confirmarsenha"
@@ -45,6 +46,7 @@
           </label>
         </div>
 
+        <label for="">Escolha uma foto para seu perfil:</label>
         <!-- Input real -->
         <input type="file" id="arquivo" accept=".jpg,.png,.pdf" />
 
@@ -63,5 +65,20 @@
         </div>
       </form>
     </div>
+
+        <script>
+        // Atualiza o texto com o nome do arquivo selecionado
+        const inputFile = document.getElementById('arquivo');
+        const fileName = document.getElementById('file-name');
+
+        inputFile.addEventListener('change', function() {
+            if (this.files.length > 0) {
+            fileName.textContent = this.files[0].name;
+            } else {
+            fileName.textContent = "Nenhum arquivo selecionado";
+            }
+        });
+    </script>
+    
   </body>
 </html>
