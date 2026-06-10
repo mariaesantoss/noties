@@ -10,7 +10,6 @@
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  color: var(--branco);
   font-family: "Roboto";
   font-weight: 300;
 }
@@ -33,12 +32,13 @@ html {
   flex-direction: column;
   align-items: center;
   padding: 40px;
-  width: 35vw;
+  width: 40vw;
   height: auto;
   background: rgba(0, 0, 0, 0.595);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.286);
   backdrop-filter: blur(7px);
   border-radius: 25px;
+  color: var(--branco);
 }
 
 h1 {
@@ -86,6 +86,12 @@ span {
 #buttons a {
   text-decoration: none;
   font-weight: 500;
+  text-decoration: none;
+  color: var(--branco);
+}
+
+#buttons .btn:hover a {
+  color: var(--roxo);
 }
 
 .btn,
@@ -93,6 +99,7 @@ span {
   width: 100%;
   font-weight: 500;
   white-space: nowrap;
+  color: var(--branco);
 }
 
 label {
@@ -108,6 +115,7 @@ input {
   border-radius: 8px;
   background: none;
   outline: none;
+  color: var(--branco);
 }
 
 ::placeholder {
@@ -177,15 +185,19 @@ input[type="file"] {
 @media screen and (max-width: 790px) {
   #cadastro,#login {
     padding: 40px;
-    width: auto;
-    max-width: 50vw;
+    width: 40vw;
+    min-width: 60vw;
     height: auto;
-    max-width: 40vh;
+    max-height: 80vh;
   }
 
   #criarconfirmar {
     grid-template-columns: 1fr;
     gap: 0px;
+  }
+
+  h1{
+    margin-bottom: 10px;
   }
 
   h2 {
@@ -211,6 +223,6 @@ input[type="file"] {
 
   .btn{
     width: auto;
-    /* max-width: 50vw;  */
   }
 }
+
