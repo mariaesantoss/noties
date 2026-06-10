@@ -1,50 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="geral.css">
-    <link rel="stylesheet" href="cadastro-login.css">
-</head>
-<body>
+    <link rel="stylesheet" href="geral.css" />
+    <link rel="stylesheet" href="cadastro-login.css" />
+  </head>
+  <body>
     <div id="cadastro">
-        <h1>NOTIES</h1>
-        <h2>Bem-vindo(a)!</h2>
-        <span>Antes de começar a registrar suas ideias, crie uma conta.</span>            
+      <h1>NOTIES</h1>
+      <h2>Bem-vindo(a)!</h2>
+      <span>Antes de começar a registrar suas ideias, crie uma conta.</span>
 
-        <form action="" id="form"> 
-            <label for="email">Qual e-mail vai usar?<br>
-                    <input type="email" name="email" placeholder="examplo@gmail.com" required>
-            </label>
+      <form action="" id="form">
+        <label for="email"
+          >Qual e-mail vai usar?<br />
+          <input
+            type="email"
+            name="email"
+            placeholder="examplo@gmail.com"
+            required
+          />
+        </label>
 
-            <div id="criarconfirmar">
-                <label for="senha"> Crie uma senha<br>
-                    <input type="password" name="senha" placeholder="senha123" required>
-                </label>
-                <label for="confirmarsenha"> Confirme a sua senha<br>
-                    <input type="password" name="confirmarsenha" placeholder="senha123" required>
-                </label>
-            </div>
+        <div id="criarconfirmar">
+          <label for="senha">
+            Crie uma senha<br />
+            <input
+              type="password"
+              name="senha"
+              placeholder="senha123"
+              required
+            />
+          </label>
+          <label for="confirmarsenha">
+            Confirme a sua senha<br />
+            <input
+              type="password"
+              name="confirmarsenha"
+              placeholder="senha123"
+              required
+            />
+          </label>
+        </div>
 
-            <!-- Input real -->
-            <input type="file" id="arquivo" accept=".jpg,.png,.pdf">
-  
-            <!-- Label que aciona o input -->
-            <label for="arquivo" class="file-label">📂 Escolher arquivo</label>
-            
-            <!-- Onde o nome do arquivo será exibido -->
-            <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
+        <!-- Input real -->
+        <input type="file" id="arquivo" accept=".jpg,.png,.pdf" />
 
-            <div id="buttons">
-                <button class="btn">
-                    <a href="cadastro.html">Criar conta</a>
-                </button>     
-                <button class="cta-btn">
-                    <a href="dashboard.html">Entrar</a>
-                </button>
-            </div>    
-        </form>
+        <!-- Label que aciona o input -->
+        <label for="arquivo" class="file-label">📂 Escolher arquivo</label>
+
+        <!-- Onde o nome do arquivo será exibido -->
+        <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
+        <div id="buttons">
+          <button class="btn">
+            <a href="login.html">Já tenho uma conta</a>
+          </button>
+          <button class="cta-btn">
+            <a href="dashboard.html">Entrar</a>
+          </button>
+        </div>
+      </form>
     </div>
-</body>
+  </body>
 </html>
