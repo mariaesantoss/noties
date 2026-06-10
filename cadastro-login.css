@@ -86,7 +86,6 @@ span {
 #buttons a {
   text-decoration: none;
   font-weight: 500;
-  text-decoration: none;
   color: var(--branco);
 }
 
@@ -225,4 +224,3 @@ input[type="file"] {
     width: auto;
   }
 }
-
