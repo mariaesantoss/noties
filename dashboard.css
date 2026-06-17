@@ -9,12 +9,21 @@
 
 #navbar{
     display: flex;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
     align-items: center;
     justify-content: space-between;
     height: 10vh;
     border-bottom: solid var(--cinzaescuro) 1px;
     padding-left: 10%;
     padding-right: 10%;
+}
+
+nav{
+    background-color: var(--preto);
 }
 
 #voce img{
@@ -94,9 +103,9 @@ span{
 
 main{
     display: grid;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 0.8fr 3fr;
     align-items: center;
-    padding: 5vh 10vw 0vh 10vw;
+    padding: 0vh 10vw 10vh 10vw;
 }
 
 #painel{
@@ -106,20 +115,51 @@ main{
 }
 
 .card p, li, i{
-    color: black;
+    color: var(--preto);
     list-style: none;
 }
 
 ul{
+    padding: 0;
     width: 100%;
     display: flex;
-    align-content: space-evenly;
-    justify-content: center;
+    align-items: center;       /* Alinha verticalmente ao centro */
+    justify-content: space-between; /* Seque e separa os elementos horizontalmente */
+}
+
+#criarnota{
+    background-color: var(--roxo);
+    border: none;
+    border-radius: 50px;
+    min-width: 4vw;
+    max-width: 20vw;
 }
 
 .card{
-    padding: 2vh 2vw 2vh 2vw;
+    display: flex;
+    position: relative;
+    overflow: hidden;
 }
+
+.card-body{
+    padding: 15%;
+}
+
+.bx bx-x{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+}
+
+.card img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+
+
 
 footer{
     display: flex;
