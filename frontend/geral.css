@@ -23,3 +23,15 @@
     border: none;
     background-color: var(--roxo);
 }
+
+.btn:hover{
+    background-color: var(--branco);
+    box-shadow: 0 0 20px 5px #6d44ff65;
+    transition: box-shadow 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.cta-btn:hover{
+    box-shadow: 0 0 20px 5px #7c44ff48;  
+    transition: box-shadow 0.3s ease-in-out;
+}
