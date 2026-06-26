@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Usuários</title>
+    <style>
+        input { padding: 10px; }
+        button { padding: 10px 20px; cursor: pointer; background: #28a745; color: white; border: none; }
+        table { width: 100%; margin-top: 20px; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        .btn-del { background: #dc3545; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Usuários</h2>
+        <input type="number" id="inputCod" placeholder="Cód">
+        <input type="text" id="inputNome" placeholder="Nome">
+        <button onclick="salvar()">Inserir Usuário</button>
+
+        <table id="tabela">
+            <thead>
+                <tr>
+                    <th>Cód</th>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="corpoTabela"></tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

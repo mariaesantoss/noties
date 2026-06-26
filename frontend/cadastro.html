@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="geral.css" />
-    <link rel="stylesheet" href="cadastro-login.css" />
+    <link rel="stylesheet" href="cadastro.css" />
   </head>
   <body>
     <div id="cadastro">
@@ -45,23 +45,44 @@
           </label>
         </div>
 
-        <!-- Input real -->
-        <input type="file" id="arquivo" accept=".jpg,.png,.pdf" />
+        <label for="fotoperfil">
+          Que tal uma foto de perfil? <br>
+          <!-- Input real -->
+          <input type="file" id="arquivo" required accept=".jpg,.png,.pdf"/>
 
-        <!-- Label que aciona o input -->
-        <label for="arquivo" class="file-label">📂 Escolher arquivo</label>
+          <!-- Label que aciona o input -->
+          <label for="arquivo" class="file-label">📂 Escolher arquivo</label>
 
-        <!-- Onde o nome do arquivo será exibido -->
-        <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
+          <!-- Onde o nome do arquivo será exibido -->
+          <span class="file-name" id="file-name">Nenhum arquivo selecionado</span>
+        </label>
+
         <div id="buttons">
           <button class="btn">
             <a href="login.html">Já tenho uma conta</a>
           </button>
-          <button class="cta-btn">
+          <button type="submit" class="cta-btn">
             <a href="dashboard.html">Entrar</a>
           </button>
         </div>
       </form>
     </div>
+
+    <script>
+        // Atualiza o texto com o nome do arquivo selecionado
+        const inputFile = document.getElementById('arquivo');
+        const fileName = document.getElementById('file-name');
+
+        inputFile.addEventListener('change', function() {
+            if (this.files.length > 0) {
+            fileName.textContent = this.files[0].name;
+            } else {
+            fileName.textContent = "Nenhum arquivo selecionado";
+            }
+        });
+    </script>
+
+    <script src="node.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

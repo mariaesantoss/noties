@@ -5,7 +5,11 @@
     --cinza: #626262;
     --cinzaescuro:#282828;
     --cinzaclaro:#e4e4e48e;
-    --preto: #030303
+    --preto: #030303;
+    --vermelho: #E03F1F;
+    --azul: #3381FF;
+    --vermelhoescuro: #660200;
+    --azulescuro: #0C345A;
 }
 
 .btn{

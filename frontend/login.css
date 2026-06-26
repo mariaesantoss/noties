@@ -2,7 +2,6 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 /* Fontes importadas */
 
@@ -16,7 +15,8 @@
 }
 
 body {
-  background-image: url(https://static.vecteezy.com/ti/fotos-gratis/p1/69816253-estrelado-noite-montanha-por-do-sol-panorama-gratis-foto.jpg);
+  background-image: url(https://i.pinimg.com/736x/53/fe/10/53fe1060b771170c1e004dc53cf1a392.jpg);
+  background-size: cover;
 }
 
 html {
@@ -27,8 +27,7 @@ html {
   justify-content: center;
 }
 
-#cadastro,
-#login {
+#cadastro , #login{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -67,16 +66,7 @@ span {
   margin-top: 5%;
 }
 
-#criarconfirmar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  width: 100%;
-  gap: 10px;
-}
-
 #buttons {
-  display: flex;
-  justify-content: center;
   width: 100%;
   height: 6vh;
   margin-top: 10%;
@@ -88,11 +78,20 @@ span {
   font-weight: 500;
 }
 
-.btn,
-.cta-btn {
+.btn,.cta-btn {
   width: 100%;
+  height: 100%;
   font-weight: 500;
   white-space: nowrap;
+}
+
+#buttons label{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 label {
@@ -114,78 +113,20 @@ input {
   color: var(--cinzaclaro);
 }
 
-/* Esconde o input original */
-input[type="file"] {
-  position: absolute;
-  left: -9999px; /* Fora da tela */
-}
-
-/* Botão personalizado */
-.file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--preto);
-  color: white;
-  font-size: 14px;
-  font-family: "DM Sans";
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-/* Botão personalizado */
-.file-label {
-  display: inline-block;
-  padding: 10px 20px;
-  background-color: var(--preto);
-  color: white;
-  font-size: 14px;
-  font-family: "DM Sans";
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.file-label:hover {
-  background-color: var(--roxo);
-}
-
-.file-name {
-  margin-left: 10px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  color: var(--cinzaclaro);
-}
-.file-label:hover {
-  background-color: var(--roxo);
-}
-
-.file-name {
-  margin-left: 10px;
-  font-size: 14px;
-  font-family: Arial, sans-serif;
-  color: var(--cinzaclaro);
-}
-
 /* Quando a tela tiver no máximo 768px de largura */
 @media screen and (min-width: 791px) and (max-width: 1080px) {
-  #cadastro, #login {
+  #cadastro , #login{
     width: 50vw;
     height: auto;
   }
 }
 
 @media screen and (max-width: 790px) {
-  #cadastro,#login {
+  #login {
     padding: 40px;
-    width: auto;
     max-width: 50vw;
     height: auto;
-    max-width: 40vh;
-  }
-
-  #criarconfirmar {
-    grid-template-columns: 1fr;
-    gap: 0px;
+    min-width: 60vw;
   }
 
   h2 {
@@ -208,9 +149,17 @@ input[type="file"] {
     font-size: 0.8rem;
     padding: 10px;
   }
+}
 
-  .btn{
-    width: auto;
-    /* max-width: 50vw;  */
+@media screen and (max-width: 422px){
+  
+  #login{
+    max-width: auto;
+    height: auto;
+    min-width: 80vw;
+  }
+
+  form{
+    font-size: 0.80rem;
   }
 }
