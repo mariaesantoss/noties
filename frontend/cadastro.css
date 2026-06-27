@@ -171,10 +171,10 @@ input[type="file"] {
 @media screen and (max-width: 790px) {
   #cadastro , #login {
     padding: 40px;
-    width: 40vw;
-    min-width: 60vw;
+    width: 80vw;
+    min-width: 40vw;
     height: auto;
-    max-height: 80vh;
+    max-height: auto;
   }
 
   #criarconfirmar {

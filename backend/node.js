@@ -1,124 +1,110 @@
-import express from 'express';
-import { createConnection } from 'mysql2/promise';
-import cors from 'cors';
+const express = require('express');
+const mysql = require('mysql2');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
-// Permite receber imagens em formato Base64 (textos longos)
-app.use(express.json({ limit: '50mb' })); 
 app.use(cors());
+// Aumentando o limite para suportar o envio das fotos em Base64 (LONGTEXT)
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
-const dbConfig = { host: 'localhost', user: 'root', password: '', database: 'bloco_notas' };
-let connection;
-
-async function connectToDatabase() {
-    if (!connection) connection = await createConnection(dbConfig);
-    return connection;
-}
-
-/* FUNCIONALIDADES DE USUÁRIO */
-
-// 1. Cadastrar Usuário (Com verificação de existência)
-app.post('/usuarios', async (req, res) => {
-    const { nome, email, senha, foto } = req.body;
-    try {
-        const conn = await connectToDatabase();
-        
-        // Verifica se o e-mail já existe
-        const [existe] = await conn.execute('SELECT email FROM usuarios WHERE email = ?', [email]);
-        if (existe.length > 0) {
-            return res.status(400).send('Este e-mail já está cadastrado!');
-        }
-
-        await conn.execute(
-            'INSERT INTO usuarios (nome, email, senha, foto) VALUES (?, ?, ?, ?)', 
-            [nome, email, senha, foto]
-        );
-        res.status(201).send('Usuário cadastrado com sucesso!');
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// Conexão com o Banco de Dados
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',      // Altere se o seu usuário do MySQL for diferente
+    password: '',      // Coloque a senha do seu MySQL aqui
+    database: 'bloco_notas'
 });
 
-// 2. Verificar Senha / Login
-app.post('/login', async (req, res) => {
+db.connect(err => {
+    if (err) {
+        console.error('Erro ao conectar ao banco de dados:', err);
+        return;
+    }
+    console.log('Conectado ao banco de dados MySQL.');
+});
+
+// 1. ROTA DE CADASTRO
+app.post('/api/cadastro', (req, res) => {
+    const { email, senha, foto } = req.body;
+
+    // Verificar se usuário já existe
+    db.query('SELECT email FROM usuarios WHERE email = ?', [email], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (results.length > 0) {
+            return res.status(400).json({ message: 'Este e-mail já está cadastrado!' });
+        }
+
+        // Inserir novo usuário (Nota: O campo "nome" não está no seu HTML, salvaremos o início do email temporariamente)
+        const nome temporario = email.split('@')[0];
+        db.query('INSERT INTO usuarios (nome, email, senha, foto) VALUES (?, ?, ?, ?)', 
+        [nome, email, senha, foto], (err, result) => {
+            if (err) return res.status(500).json({ error: err.message });
+            res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
+        });
+    });
+});
+
+// 2. ROTA DE LOGIN
+app.post('/api/login', (req, res) => {
     const { email, senha } = req.body;
-    try {
-        const conn = await connectToDatabase();
-        const [rows] = await conn.execute('SELECT * FROM usuarios WHERE email = ?', [email]);
-        
-        if (rows.length === 0) {
-            return res.status(44).send('Usuário não encontrado.');
+
+    db.query('SELECT email, foto FROM usuarios WHERE email = ? AND senha = ?', [email, senha], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (results.length === 0) {
+            return res.status(401).json({ message: 'E-mail ou senha incorretos!' });
         }
-
-        const usuario = rows[0];
-        if (usuario.senha !== senha) {
-            return res.status(401).send('Senha incorreta.');
-        }
-
-        // Retorna os dados do usuário para o Front-end salvar na sessão
-        res.json({ nome: usuario.nome, email: usuario.email, foto: usuario.foto });
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+        // Retorna os dados do usuário logado
+        res.json({ message: 'Login bem-sucedido!', user: results[0] });
+    });
 });
 
-
-/* FUNCIONALIDADES DE ANOTAÇÕES */
-
-// 3. Adicionar Nota
-app.post('/anotacoes', async (req, res) => {
-    const { titulo, conteudo, imagem, usuario_email } = req.body;
-    const data_criacao = new Date().toISOString().split('T')[0]; // Data atual (AAAA-MM-DD)
-    try {
-        const conn = await connectToDatabase();
-        await conn.execute(
-            'INSERT INTO anotacoes (titulo, data_criacao, conteudo, imagem, usuario_email) VALUES (?, ?, ?, ?, ?)',
-            [titulo, data_criacao, conteudo, imagem, usuario_email]
-        );
-        res.status(201).send('Nota criada com sucesso!');
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// 3. ROTA PARA BUSCAR DETALHES DO USUÁRIO (Foto de Perfil)
+app.get('/api/usuario/:email', (req, res) => {
+    db.query('SELECT foto FROM usuarios WHERE email = ?', [req.params.email], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        if (results.length === 0) return res.status(404).json({ message: 'Usuário não encontrado' });
+        res.json(results[0]);
+    });
 });
 
-// 4. Visualizar / Listar Notas de um usuário específico
-app.get('/anotacoes/:email', async (req, res) => {
-    try {
-        const conn = await connectToDatabase();
-        const [rows] = await conn.execute(
-            'SELECT * FROM anotacoes WHERE usuario_email = ? ORDER BY id DESC', 
-            [req.params.email]
-        );
-        res.json(rows);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// 4. ROTA PARA BUSCAR ANOTAÇÕES DO USUÁRIO
+app.get('/api/anotacoes/:email', (req, res) => {
+    db.query('SELECT * FROM anotacoes WHERE usuario_email = ? ORDER BY id DESC', [req.params.email], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
 });
 
-// 5. Editar Nota
-app.put('/anotacoes/:id', async (req, res) => {
-    const { titulo, conteudo, imagem } = req.body;
-    try {
-        const conn = await connectToDatabase();
-        await conn.execute(
-            'UPDATE anotacoes SET titulo = ?, conteudo = ?, imagem = ? WHERE id = ?',
-            [titulo, conteudo, imagem, req.params.id]
-        );
-        res.send('Nota atualizada com sucesso!');
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// 5. ROTA PARA CRIAR ANOTAÇÃO
+app.post('/api/anotacoes', (req, res) => {
+    const { titulo, data_criacao, conteudo, imagem, usuario_email } = req.body;
+    db.query('INSERT INTO anotacoes (titulo, data_criacao, conteudo, imagem, usuario_email) VALUES (?, ?, ?, ?, ?)',
+    [titulo, data_criacao, conteudo, imagem, usuario_email], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.status(201).json({ message: 'Anotação criada!', id: result.insertId });
+    });
 });
 
-// 6. Excluir Nota
-app.delete('/anotacoes/:id', async (req, res) => {
-    try {
-        const conn = await connectToDatabase();
-        await conn.execute('DELETE FROM anotacoes WHERE id = ?', [req.params.id]);
-        res.send('Nota excluída com sucesso!');
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
+// 6. ROTA PARA EDITAR ANOTAÇÃO
+app.put('/api/anotacoes/:id', (req, res) => {
+    const { titulo, data_criacao, conteudo } = req.body;
+    db.query('UPDATE anotacoes SET titulo = ?, data_criacao = ?, conteudo = ? WHERE id = ?',
+    [titulo, data_criacao, conteudo, req.params.id], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: 'Anotação atualizada com sucesso!' });
+    });
 });
 
-app.listen(3000, () => console.log('Servidor rodando em http://localhost:3000'));
+// 7. ROTA PARA DELETAR ANOTAÇÃO
+app.delete('/api/anotacoes/:id', (req, res) => {
+    db.query('DELETE FROM anotacoes WHERE id = ?', [req.params.id], (err, result) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json({ message: 'Anotação excluída com sucesso!' });
+    });
+});
+
+app.listen(3000, () => {
+    console.log('Servidor rodando na porta 3000');
+});
