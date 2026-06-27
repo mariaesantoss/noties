@@ -2,6 +2,14 @@ const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const http = require('http');
+
+const server = http.createServer(8080, 'localhost', ()=> {
+    console.log('Servidor de pé em: https://localhost:8080')
+    console.log('Para desligar o servidor: ctrl + c')
+});
+
+server.listen()
 
 const app = express();
 app.use(cors());
@@ -17,8 +25,8 @@ const db = mysql.createConnection({
     database: 'bloco_notas'
 });
 
-db.connect(err => {
-    if (err) {
+db.connect(error => {
+    if (error) {
         console.error('Erro ao conectar ao banco de dados:', err);
         return;
     }
@@ -37,9 +45,9 @@ app.post('/api/cadastro', (req, res) => {
         }
 
         // Inserir novo usuário (Nota: O campo "nome" não está no seu HTML, salvaremos o início do email temporariamente)
-        const nome temporario = email.split('@')[0];
-        db.query('INSERT INTO usuarios (nome, email, senha, foto) VALUES (?, ?, ?, ?)', 
-        [nome, email, senha, foto], (err, result) => {
+        // const nometemporario = email.split('@')[0];
+        db.query('INSERT INTO usuarios (email, senha, foto) VALUES (?, ?, ?, ?)', 
+        [email, senha, foto], (err, result) => {
             if (err) return res.status(500).json({ error: err.message });
             res.status(201).json({ message: 'Usuário cadastrado com sucesso!' });
         });
