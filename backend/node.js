@@ -9,8 +9,6 @@ const server = http.createServer(8080, 'localhost', ()=> {
     console.log('Para desligar o servidor: ctrl + c')
 });
 
-server.listen()
-
 const app = express();
 app.use(cors());
 // Aumentando o limite para suportar o envio das fotos em Base64 (LONGTEXT)
