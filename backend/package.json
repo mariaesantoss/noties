@@ -2,17 +2,14 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "mysql2": "^3.22.5"
-  },
-  "scripts": {
-    "start": "node node.js"
-  },
-  "name": "backend",
-  "version": "1.0.0",
-  "description": "",
-  "main": "node.js",
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs"
+    "mysql2": "^3.22.5",
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "node.js",
+    "keywords": "",
+    "author": "",
+    "license": "ISC",
+    "type": "commonjs"
+  }
 }

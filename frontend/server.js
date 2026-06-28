@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:3000/api';
+const API_URL = 'http://localhost:8080/api';
 
 // Identifica em qual página o usuário está com base nos elementos na tela
 document.addEventListener('DOMContentLoaded', () => {

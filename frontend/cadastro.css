@@ -97,6 +97,7 @@ span {
   font-weight: 500;
   white-space: nowrap;
   color: var(--branco);
+  cursor: pointer;
 }
 
 label {
