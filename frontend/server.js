@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8080/api';
+const API_URL = 'http://localhost:5500/api'; //Toda vez que o frontend precisar falar com o servidor, ele usará essa variável para evitar ter que digitar o endereço completo repetidamente.
 
 // Identifica em qual página o usuário está com base nos elementos na tela
 document.addEventListener('DOMContentLoaded', () => {
