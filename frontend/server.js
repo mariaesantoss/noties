@@ -226,7 +226,7 @@ async function inicializarDashboard() {
                     Swal.fire('Erro', 'Preencha todos os campos!', 'error');
                     return;
                 }
-
+                //Envia um POST para salvar a nova anotação vinculando-a ao e-mail do usuário ativo no momento. Após gravado com sucesso, recarrega a lista de notas atualizando o grid.
                 await fetch(`${API_URL}/anotacoes`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -239,8 +239,14 @@ async function inicializarDashboard() {
     });
 
     // Função Modal Editar (SweetAlert2)
+    //(A função abrirModalEditar(nota) executa rigorosamente a mesma lógica do SweetAlert2 acima, apenas pré-carregando os textos antigos da nota nos campos através da propriedade value e disparando um método PUT ao invés de POST).
     function abrirModalEditar(nota) {
         // Formatar data para o input HTML (AAAA-MM-DD)
+        /*new Date(nota.data_criacao): Transforma o texto do banco em um objeto de data real do JavaScript.
+        .toISOString(): Transforma essa data em uma string padronizada internacionalmente, que fica mais ou menos assim: "2026-06-29T20:15:30.000Z".
+        .split('T'): Corta a string no meio, usando a letra T como tesoura. Isso gera uma lista com duas partes: ["2026-06-29", "20:15:30.000Z"].
+        [0]: Pega apenas o primeiro pedaço da lista (o índice 0), que é exatamente "2026-06-29"*/
+
         const dataFormatada = new Date(nota.data_criacao).toISOString().split('T')[0];
 
         Swal.fire({
